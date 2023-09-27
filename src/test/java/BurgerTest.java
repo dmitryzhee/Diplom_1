@@ -1,9 +1,7 @@
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -16,7 +14,7 @@ import static praktikum.IngredientType.SAUCE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
-  Burger burger = new Burger();
+
   @Mock
   Bun bun;
 
@@ -27,15 +25,33 @@ public class BurgerTest {
 
   @Test
   public void addIngredientSuccess() {
+    Burger burger = new Burger(ingredients);
     burger.addIngredient(ingredient);
     Mockito.verify(ingredients).add(ingredient);
   }
 
+
+//  @Test
+//  public void setBunsSuccess() {
+//    burger.setBuns(bun);
+//    Mockito.verify(burger).setBuns(bun);
+//  }
+
   @Test
-  public void setBunsSuccess() {
-    burger.setBuns(bun);
-    Mockito.verify(burger).setBuns(bun);
+  public void removeIngredientsSuccess() {
+    Burger burger = new Burger(ingredients);
+    burger.removeIngredient(0);
+    Mockito.verify(ingredients).remove(0);
   }
+
+  @Test
+  public void moveIngredientSuccess() {
+    Burger burger = new Burger(ingredients);
+    burger.moveIngredient(2, 1);
+    Mockito.verify(ingredients).add(1, ingredients.remove(2));
+  }
+
+
 
 
 

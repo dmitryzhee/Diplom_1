@@ -1,9 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import praktikum.Ingredient;
-import praktikum.IngredientType;
+
 import static praktikum.IngredientType.SAUCE;
 
 public class IngredientTest {
