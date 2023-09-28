@@ -39,8 +39,8 @@ public class BurgerParameterizedTest {
   @Parameterized.Parameters
   public static Object[][] getData() {
     return new Object[][] {
-            {Arrays.asList(SAUCE, FILLING, FILLING), Arrays.asList("Котлета", "Кетчуп", "Помидор"), Arrays.asList(50F, 5F, 10F), 70F},
-
+            {Arrays.asList(SAUCE, FILLING, FILLING), Arrays.asList("Котлета", "Кетчуп", "Помидор"), Arrays.asList(50F, 5F, 10F), 85F},
+            {Arrays.asList(FILLING, SAUCE, FILLING), Arrays.asList("Курица", "Майонез", "Салат"), Arrays.asList(40F,6.5F, 11.2F), 77.7F},
     };
   }
 
@@ -55,7 +55,6 @@ public class BurgerParameterizedTest {
   @Test
   public void getPriceSuccess() {
     Burger burger = new Burger();
-    float expectedPrice = 85F;
     Bun bun = mock(Bun.class);
     Mockito.when(bun.getPrice()).thenReturn(10F);
     for (int i = 0; i<ingredientType.size(); i++) {
@@ -65,6 +64,20 @@ public class BurgerParameterizedTest {
     burger.setBuns(bun);
     System.out.println(burger.getPrice());
     Assert.assertEquals(expectedPrice, burger.getPrice(), 0);
+  }
+
+  @Test
+  public void getReceiptSuccess() {
+    Burger burger = new Burger();
+    Bun bun = mock(Bun.class);
+    Mockito.when(bun.getName()).thenReturn("Пшеничная");
+    for (int i = 0; i<ingredientType.size(); i++) {
+      Ingredient ingredient = new Ingredient(ingredientType.get(i), name.get(i), price.get(i));
+      burger.addIngredient(ingredient);
+    }
+    burger.setBuns(bun);
+    burger.getReceipt();
+    System.out.println(burger.getReceipt());
   }
 
 

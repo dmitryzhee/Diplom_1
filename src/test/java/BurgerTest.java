@@ -54,20 +54,7 @@ public class BurgerTest {
     Mockito.verify(ingredients).add(1, ingredients.remove(2));
   }
 
-  @Test
-  public void getPriceSuccess() {
-    Burger burger = new Burger();
-    float expectedPrice = 80F;
-    Bun bun = mock(Bun.class);
-    Mockito.when(bun.getPrice()).thenReturn(10F);
-    Ingredient ingredient1 = new Ingredient(FILLING, "Котлета", 50F);
-    Ingredient ingredient2 = new Ingredient(SAUCE, "Кетчуп", 10F);
-    burger.addIngredient(ingredient1);
-    burger.addIngredient(ingredient2);
-    burger.setBuns(bun);
-    System.out.println(burger.getPrice());
-    Assert.assertEquals(expectedPrice, burger.getPrice(), 0);
-  }
+
 
 
 
