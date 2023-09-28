@@ -33,12 +33,13 @@ public class BurgerTest {
     Mockito.verify(ingredients).add(ingredient);
   }
 
-
-//  @Test
-//  public void setBunsSuccess() {
-//    burger.setBuns(bun);
-//    Mockito.verify(burger).setBuns(bun);
-//  }
+  @Test
+  public void addIngredientSuccessAlt() {
+    Burger burger = new Burger();
+    burger.ingredients = ingredients;
+    burger.addIngredient(ingredient);
+    Mockito.verify(ingredients).add(ingredient);
+  }
 
   @Test
   public void removeIngredientsSuccess() {

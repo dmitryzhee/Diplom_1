@@ -4,6 +4,7 @@ import praktikum.Ingredient;
 
 import static praktikum.IngredientType.SAUCE;
 
+
 public class IngredientTest {
     Ingredient ingredient = new Ingredient(SAUCE, "Кетчуп", 10);
 

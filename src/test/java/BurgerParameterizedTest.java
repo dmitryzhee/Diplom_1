@@ -41,6 +41,8 @@ public class BurgerParameterizedTest {
     return new Object[][] {
             {Arrays.asList(SAUCE, FILLING, FILLING), Arrays.asList("Котлета", "Кетчуп", "Помидор"), Arrays.asList(50F, 5F, 10F), 85F},
             {Arrays.asList(FILLING, SAUCE, FILLING), Arrays.asList("Курица", "Майонез", "Салат"), Arrays.asList(40F,6.5F, 11.2F), 77.7F},
+            {Arrays.asList(FILLING, FILLING, FILLING), Arrays.asList("Рыба", "Яйцо", "Салат"), Arrays.asList(60F,10.8F, 11.2F), 102F},
+
     };
   }
 

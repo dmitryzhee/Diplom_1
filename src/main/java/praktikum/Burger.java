@@ -16,6 +16,7 @@ public class Burger {
     public Burger (List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+
     public Burger() {
     }
     public List<Ingredient> ingredients = new ArrayList<>();
