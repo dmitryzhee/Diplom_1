@@ -40,8 +40,8 @@ public class BurgerParameterizedTest {
   public static Object[][] getData() {
     return new Object[][] {
             {Arrays.asList(SAUCE, FILLING, FILLING), Arrays.asList("Котлета", "Кетчуп", "Помидор"), Arrays.asList(50F, 5F, 10F), 85F},
-            {Arrays.asList(FILLING, SAUCE, FILLING), Arrays.asList("Курица", "Майонез", "Салат"), Arrays.asList(40F,6.5F, 11.2F), 77.7F},
-            {Arrays.asList(FILLING, FILLING, FILLING), Arrays.asList("Рыба", "Яйцо", "Салат"), Arrays.asList(60F,10.8F, 11.2F), 102F},
+            {Arrays.asList(FILLING, FILLING, FILLING, SAUCE), Arrays.asList("Рыба", "Яйцо", "Салат", "Майонез"), Arrays.asList(60F, 10.8F, 11.2F, 6.5F), 108.5F},
+            {null, null, null, 20F}
 
     };
   }
@@ -59,9 +59,11 @@ public class BurgerParameterizedTest {
     Burger burger = new Burger();
     Bun bun = mock(Bun.class);
     Mockito.when(bun.getPrice()).thenReturn(10F);
-    for (int i = 0; i<ingredientType.size(); i++) {
-      Ingredient ingredient = new Ingredient(ingredientType.get(i), name.get(i), price.get(i));
-      burger.addIngredient(ingredient);
+    if (ingredientType != null && name!= null) {
+      for (int i = 0; i<ingredientType.size(); i++) {
+        Ingredient ingredient = new Ingredient(ingredientType.get(i), name.get(i), price.get(i));
+        burger.addIngredient(ingredient);
+      }
     }
     burger.setBuns(bun);
     System.out.println(burger.getPrice());
@@ -69,18 +71,32 @@ public class BurgerParameterizedTest {
   }
 
   @Test
-  public void getReceiptSuccess() {
+  public void ReceiptIngredientsAreInCorrectPosition() {
     Burger burger = new Burger();
     Bun bun = mock(Bun.class);
     Mockito.when(bun.getName()).thenReturn("Пшеничная");
-    for (int i = 0; i<ingredientType.size(); i++) {
-      Ingredient ingredient = new Ingredient(ingredientType.get(i), name.get(i), price.get(i));
-      burger.addIngredient(ingredient);
+    Mockito.when(bun.getPrice()).thenReturn(10F);
+    if (ingredientType != null && name!= null) {
+      for (int i = 0; i<ingredientType.size(); i++) {
+        Ingredient ingredient = new Ingredient(ingredientType.get(i), name.get(i), price.get(i));
+        burger.addIngredient(ingredient);
+      }
     }
     burger.setBuns(bun);
-    burger.getReceipt();
-    System.out.println(burger.getReceipt());
+    String burgerReceipt = burger.getReceipt();
+    System.out.println(burgerReceipt);
+    String [] lines = burgerReceipt.split("\n");
+    if (ingredientType != null && name!= null) {
+      for (int i = 1; i<ingredientType.size()+1; i++) {
+        Assert.assertTrue(lines[i].contains(ingredientType.get(i-1).toString().toLowerCase()));
+        Assert.assertTrue(lines[i].contains(name.get(i-1).toString()));
+      }
+    } else Assert.assertTrue(burgerReceipt.lines().count()==4); //только булочка и цена
+
+
   }
+
+
 
 
 
