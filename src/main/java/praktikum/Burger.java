@@ -13,12 +13,6 @@ public class Burger {
 
     public Bun bun;
 
-    public Burger (List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Burger() {
-    }
     public List<Ingredient> ingredients = new ArrayList<>();
 
     public void setBuns(Bun bun) {

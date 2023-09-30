@@ -26,15 +26,9 @@ public class BurgerTest {
   @Mock
   Ingredient ingredient;
 
-  @Test
-  public void addIngredientSuccess() {
-    Burger burger = new Burger(ingredients);
-    burger.addIngredient(ingredient);
-    Mockito.verify(ingredients).add(ingredient);
-  }
 
   @Test
-  public void addIngredientSuccessAlt() {
+  public void addIngredientSuccess() {
     Burger burger = new Burger();
     burger.ingredients = ingredients;
     burger.addIngredient(ingredient);
@@ -43,14 +37,16 @@ public class BurgerTest {
 
   @Test
   public void removeIngredientsSuccess() {
-    Burger burger = new Burger(ingredients);
+    Burger burger = new Burger();
+    burger.ingredients = ingredients;
     burger.removeIngredient(0);
     Mockito.verify(ingredients).remove(0);
   }
 
   @Test
   public void moveIngredientSuccess() {
-    Burger burger = new Burger(ingredients);
+    Burger burger = new Burger();
+    burger.ingredients = ingredients;
     burger.moveIngredient(2, 1);
     Mockito.verify(ingredients).add(1, ingredients.remove(2));
   }
