@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -9,10 +8,6 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 
 import java.util.List;
-
-import static org.mockito.Mockito.mock;
-import static praktikum.IngredientType.FILLING;
-import static praktikum.IngredientType.SAUCE;
 
 
 @RunWith(MockitoJUnitRunner.class)
