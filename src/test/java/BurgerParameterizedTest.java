@@ -79,7 +79,7 @@ public class BurgerParameterizedTest {
     if (ingredientType != null && name!= null) {
       for (int i = 1; i<ingredientType.size()+1; i++) {
         Assert.assertTrue(lines[i].contains(ingredientType.get(i-1).toString().toLowerCase()));
-        Assert.assertTrue(lines[i].contains(name.get(i-1).toString()));
+        Assert.assertTrue(lines[i].contains(name.get(i-1)));
       }
     } else Assert.assertTrue(burgerReceipt.lines().count()==4); //только булочка и цена
 
