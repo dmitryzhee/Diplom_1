@@ -6,7 +6,7 @@ import static praktikum.IngredientType.SAUCE;
 
 
 public class IngredientTest {
-    Ingredient ingredient = new Ingredient(SAUCE, "Кетчуп", 10);
+    Ingredient ingredient = new Ingredient(SAUCE, "Кетчуп", 10.5F);
 
     @Test
     public void getNameSuccess() {
@@ -15,7 +15,7 @@ public class IngredientTest {
 
     @Test
     public void getPriceSuccess() {
-        Assert.assertTrue(ingredient.getPrice() == 10);
+        Assert.assertTrue(ingredient.getPrice() == 10.5F);
     }
 
     @Test
