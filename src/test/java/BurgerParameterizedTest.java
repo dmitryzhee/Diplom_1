@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -45,14 +44,6 @@ public class BurgerParameterizedTest {
 
     };
   }
-
-//    @Test
-//    public void addIngredientSuccess() {
-//      Burger burger = new Burger(ingredients);
-//      Ingredient ingredient = new Ingredient(ingredientType, name, price);
-//      burger.addIngredient(ingredient);
-//      Assert.assertTrue(ingredients.get(0)==ingredient);
-//    }
 
   @Test
   public void getPriceSuccess() {
