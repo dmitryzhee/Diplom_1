@@ -75,7 +75,6 @@ public class BurgerParameterizedTest {
     }
     burger.setBuns(bun);
     String burgerReceipt = burger.getReceipt();
-    System.out.println(burgerReceipt);
     String [] lines = burgerReceipt.split("\n");
     if (ingredientType != null && name!= null) {
       for (int i = 1; i<ingredientType.size()+1; i++) {
