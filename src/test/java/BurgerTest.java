@@ -55,8 +55,8 @@ public class BurgerTest {
     String burgerReceipt = burger.getReceipt();
     String[] lines = burgerReceipt.split("\n");
     Assert.assertEquals(burgerReceipt.lines().count(), 4); //только булочка и цена
-    Assert.assertTrue(lines[0].contains("Пшеничная"));
-    Assert.assertTrue(lines[1].contains("Пшеничная"));
+    Assert.assertTrue(lines[0].contains(String.format("(==== %s ====)", bun.getName())));
+    Assert.assertTrue(lines[1].contains(String.format("(==== %s ====)", bun.getName())));
     Assert.assertTrue(lines[2].isBlank());
     Assert.assertTrue(lines[3].contains("Price"));
   }
