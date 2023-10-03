@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -9,13 +10,11 @@ import praktikum.Ingredient;
 
 import java.util.List;
 
+import static org.mockito.Mockito.mock;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
-
-  @Mock
-  Bun bun;
-
   @Mock
   List<Ingredient> ingredients;
   @Mock
@@ -44,6 +43,31 @@ public class BurgerTest {
     burger.ingredients = ingredients;
     burger.moveIngredient(2, 1);
     Mockito.verify(ingredients).add(1, ingredients.remove(2));
+  }
+
+  @Test
+  public void burgerWithoutIngredientsGetReceiptSuccess() {
+    Burger burger = new Burger();
+    Bun bun = mock(Bun.class);
+    Mockito.when(bun.getName()).thenReturn("Пшеничная");
+    Mockito.when(bun.getPrice()).thenReturn(10F);
+    burger.setBuns(bun);
+    String burgerReceipt = burger.getReceipt();
+    String[] lines = burgerReceipt.split("\n");
+    Assert.assertEquals(burgerReceipt.lines().count(), 4); //только булочка и цена
+    Assert.assertTrue(lines[0].contains("Пшеничная"));
+    Assert.assertTrue(lines[1].contains("Пшеничная"));
+    Assert.assertTrue(lines[2].isBlank());
+    Assert.assertTrue(lines[3].contains("Price"));
+  }
+
+  @Test
+  public void burgerWithoutIngredientsGetPriceSuccess() {
+    Burger burger = new Burger();
+    Bun bun = mock(Bun.class);
+    Mockito.when(bun.getPrice()).thenReturn(15F);
+    burger.setBuns(bun);
+    Assert.assertEquals(burger.getPrice(),  bun.getPrice()*2, 0);
   }
 
 
